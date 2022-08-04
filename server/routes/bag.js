@@ -70,10 +70,59 @@ router.get('/', verifyToken, async (req, res) => {
     }
 })
 
+// Update bag (change quantity)
+router.put('/:id', verifyToken, async (req, res) => {
+    const { action } = req.body
+    if (!action) {
+        return res.status(400).json({
+            success: false,
+            message: 'Missing an action',
+        })
+    }
+    try {
+        // Check if bag product exists
+        const bagProduct = await User.findOne({
+            _id: req.userId,
+            'bag._id': req.params.id,
+        })
+
+        if (!bagProduct) {
+            return res.status(400).json({
+                success: false,
+                message: 'Product not found in bag',
+            })
+        }
+
+        let updated = {}
+        if (action === 'increase') updated = { $inc: { 'bag.$.quantity': 1 } }
+        else if (action === 'decrease')
+            updated = { $inc: { 'bag.$.quantity': -1 } }
+        else
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid action',
+            })
+
+        const updatedUser = await User.findOneAndUpdate(
+            { _id: req.userId, 'bag._id': req.params.id },
+            updated,
+            { new: true }
+        )
+
+        res.json({ success: true, message: 'Bag updated successfully' })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            success: false,
+            message: 'Internal server error',
+        })
+    }
+})
+
 // Delete product from bag
 router.delete('/:id', verifyToken, async (req, res) => {
     try {
-        // Check if favorite product exists
+        // Check if bag product exists
         const bagProduct = await User.findOne({
             _id: req.userId,
             'bag._id': req.params.id,
