@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
 import { FaUserAlt, FaHeart } from 'react-icons/fa'
 import { GiShoppingBag } from 'react-icons/gi'
-import { GoThreeBars } from 'react-icons/go'
+import { CgMenuLeft } from 'react-icons/cg'
 import logo from '../../assets/logo.png'
 import { useRef, useState } from 'react'
 import { useEffect } from 'react'
@@ -33,11 +33,11 @@ const Header = ({ isSidebarOpen, toggleSidebar }) => {
     return (
         <header className='w-full  h-[98px] bg-gray-700 border-b border-b-white/10'>
             <div className='max-w-[1230px] h-full pl-4 pr-6 mx-auto flex items-center justify-between'>
-                <GoThreeBars
+                <CgMenuLeft
                     size={24}
                     className={`${
-                        isSidebarOpen ? 'opacity-0' : 'opacity-90'
-                    } block md:hidden text-white cursor-pointer  transition-all duration-300 delay-75 hover:opacity-100`}
+                        isSidebarOpen ? 'opacity-0' : 'opacity-100'
+                    } block md:hidden text-white cursor-pointer transition-all duration-300 delay-75`}
                     onClick={toggleSidebar}
                 />
                 <Link to='/' className='h-[44px] cursor-pointer'>

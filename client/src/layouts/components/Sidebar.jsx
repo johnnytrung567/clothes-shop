@@ -42,6 +42,7 @@ const Sidebar = ({ isOpen, toggle }) => {
                                 ? 'py-4 pl-5 uppercase font-bold border-t border-t-slate-200 text-brown-300 bg-black/5 relative after:absolute after:w-1 after:left-0 after:top-0 after:bottom-0 after:bg-brown-300'
                                 : 'py-4 pl-5 text-gray-500 uppercase font-bold border-t border-t-slate-200 transition-all duration-300 hover:text-gray-700 hover:bg-black/5'
                         }
+                        onClick={toggle}
                     >
                         {item.title}
                     </NavLink>

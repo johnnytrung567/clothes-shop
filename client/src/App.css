@@ -1,0 +1,36 @@
+/* Customize slider */
+.slider-next-btn,
+.slider-prev-btn {
+    transform: translateX(-30px);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #fff !important;
+    background-color: transparent !important;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    opacity: 0.9 !important;
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+    .slider-next-btn,
+    .slider-prev-btn {
+        display: none;
+    }
+}
+
+.slider-next-btn:hover,
+.slider-prev-btn:hover {
+    border-color: #c89979 !important;
+    background-color: #c89979 !important;
+    opacity: 1 !important;
+    font-size: 26px;
+}
+
+.slider-prev-btn {
+    transform: translateX(30px);
+}

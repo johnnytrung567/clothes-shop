@@ -1,9 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import menuData from '../../data/menuData'
 
-const Navbar = () => {
+const Navbar = ({ isFixed }) => {
     return (
-        <nav className='hidden md:block h-[55px] bg-gray-700'>
+        <nav
+            className={`z-10 -top-full bg-gray-700 transition-all duration-300 hidden md:block ${
+                isFixed ? 'md:fixed md:top-0 md:left-0 md:right-0' : ''
+            } h-[55px]`}
+        >
             <div className='w-full h-full max-w-[55px] mx-auto flex items-center justify-center text-white uppercase font-bold text-13 gap-x-16'>
                 {menuData.map((item, index) => (
                     <NavLink

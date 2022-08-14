@@ -4,6 +4,6 @@
 
 @layer base {
     body {
-        @apply font-roboto;
+        @apply font-roboto text-gray-700;
     }
 }

@@ -1,4 +1,11 @@
+import Slider from '../components/Slider'
+import sliderData from '../data/sliderData'
+
 const Home = () => {
-    return <div>Home</div>
+    return (
+        <>
+            <Slider data={sliderData} />
+        </>
+    )
 }
 export default Home
